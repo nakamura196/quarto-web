@@ -1,6 +1,6 @@
 ---
-title: "Get Started"
-subtitle: "Install Quarto, then check out the tutorials to learn the basics."
+title: "はじめに"
+subtitle: "Quartoをインストールし、チュートリアルを見て基本を学びます。"
 format:
   html:
     include-in-header: 
@@ -22,9 +22,9 @@ image: /images/hero_right.png
 
 ::: {.grid .step .column-page-right}
 ::: {.g-col-lg-3 .g-col-12}
-## Step 1 
+## ステップ1
 
-#### Install Quarto {.fw-light}
+#### Quartoのインストール {.fw-light}
 :::
 
 ::: {.g-col-lg-9 .g-col-12}
