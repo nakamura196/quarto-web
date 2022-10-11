@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quarto - チュートリアル: Hello, Quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete-preset-algolia.umd.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "algolia": {
+    "application-id": "ZPJB5I1QN7",
+    "search-only-api-key": "41be6c1e0a7fea4a51b107810facf577",
+    "index-name": "prod_QUARTO",
+    "analytics-events": true,
+    "show-logo": true,
+    "libDir": "site_libs"
+  },
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
+
+
+<script type="text/javascript">
+var ALGOLIA_INSIGHTS_SRC = "https://cdn.jsdelivr.net/npm/search-insights/dist/search-insights.iife.min.js";
+!function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e[s]=e[s]||function(){
+(e[s].queue=e[s].queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],
+i.async=1,i.src=n,c.parentNode.insertBefore(i,c)
+}(window,document,"script",ALGOLIA_INSIGHTS_SRC,"aa");
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-plugin-algolia-insights">
+
+</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FV9Z7SDZ0M"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FV9Z7SDZ0M', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../tutorial.css">
+<meta property="og:title" content="Quarto - チュートリアル: Hello, Quarto">
+<meta property="og:description" content="このチュートリアルでは、QuartoでJupyter Labを使用する方法を紹介します。 他のノートブックと同じようにJupyter Labでコードやマークダウンを編集し、レンダリングされたドキュメントをWebブラウザでプレビューしながら作業を行います。">
+<meta property="og:image" content="https://quarto.org/docs/get-started/hello/images/jupyter-quarto-preview.png">
+<meta property="og:site-name" content="Quarto">
+<meta property="og:image:height" content="2026">
+<meta property="og:image:width" content="2698">
+<meta name="twitter:title" content="Quarto - チュートリアル: Hello, Quarto">
+<meta name="twitter:description" content="このチュートリアルでは、QuartoでJupyter Labを使用する方法を紹介します。 他のノートブックと同じようにJupyter Labでコードやマークダウンを編集し、レンダリングされたドキュメントをWebブラウザでプレビューしながら作業を行います。">
+<meta name="twitter:image" content="https://quarto.org/docs/get-started/hello/images/jupyter-quarto-preview.png">
+<meta name="twitter:image-height" content="2026">
+<meta name="twitter:image-width" content="2698">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../quarto.png" alt="Quarto logo." class="navbar-logo">
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html">概要</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../docs/get-started/index.html" aria-current="page">はじめに</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/guide/index.html">ガイド</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/extensions/index.html">Extensions</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/reference/index.html">Reference</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/gallery/index.html">ギャラリー</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/blog/index.html">ブログ</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">ヘルプ</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/issues"><i class="bi bi-bug" role="img">
+</i> 
+ <span class="dropdown-text">Report a Bug</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/quarto-dev/quarto-cli/discussions"><i class="bi bi-chat-right-text" role="img">
+</i> 
+ <span class="dropdown-text">Ask a Question</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../docs/faq/index.html"><i class="bi bi-question-circle" role="img">
+</i> 
+ <span class="dropdown-text">FAQ</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/quarto_pub"><i class="bi bi-twitter" role="img" aria-label="Quarto Twitter">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/quarto-dev/quarto-cli"><i class="bi bi-github" role="img" aria-label="Quarto GitHub">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">チュートリアル: Hello, Quarto</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/get-started/index.html" class="sidebar-item-text sidebar-link">はじめに</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/get-started/hello/" class="sidebar-item-text sidebar-link">チュートリアル: Hello, Quarto</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/get-started/computations/" class="sidebar-item-text sidebar-link">Tutorial: Computations</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/get-started/authoring/" class="sidebar-item-text sidebar-link">Tutorial: Authoring</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#概要" id="toc-概要" class="nav-link active" data-scroll-target="#概要">概要</a></li>
+  <li><a href="#レンダリング" id="toc-レンダリング" class="nav-link" data-scroll-target="#レンダリング">レンダリング</a></li>
+  <li><a href="#オーサリング" id="toc-オーサリング" class="nav-link" data-scroll-target="#オーサリング">オーサリング</a></li>
+  <li><a href="#yamlオプション" id="toc-yamlオプション" class="nav-link" data-scroll-target="#yamlオプション">YAMLオプション</a></li>
+  <li><a href="#マークダウンセル" id="toc-マークダウンセル" class="nav-link" data-scroll-target="#マークダウンセル">マークダウンセル</a></li>
+  <li><a href="#コードセル" id="toc-コードセル" class="nav-link" data-scroll-target="#コードセル">コードセル</a></li>
+  <li><a href="#次" id="toc-次" class="nav-link" data-scroll-target="#次">次</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/quarto-dev/quarto-web/edit/main/docs/get-started/hello/jupyter.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/quarto-dev/quarto-web/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">チュートリアル: Hello, Quarto</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul id="choose-your-tool" class="nav nav-tabs" role="tablist">
+  <h3 class="no-anchor">Choose your tool</h3>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="vscode.html">
+      <img src="../images/vscode-logo.png">VS Code
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="rstudio.html">
+      <img src="../images/rstudio-logo.png">RStudio
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="jupyter.html">
+      <img src="../images/jupyter-logo.png">Jupyter
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" href="text-editor.html">
+      <img src="../images/text-editor-logo.png" id="text-editor-logo">Editor
+    </a>
+  </li>
+</ul>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  // get file name
+  const filename = window.location.pathname.split("/").slice(-1)[0];
+  
+  // latch active
+  const toolLinks = window.document.querySelectorAll("#choose-your-tool a");
+  for (const tool of toolLinks) {
+    if (tool.href.endsWith(filename)) {
+      tool.classList.add("active");
+      break;
+    }
+  }
+  
+   // save in local storage
+  window.localStorage.setItem("tutorialTool", filename);
+});
+
+</script>
+<section id="概要" class="level2">
+<h2 class="anchored" data-anchor-id="概要">概要</h2>
+<p>このチュートリアルでは、QuartoでJupyter Labを使用する方法を紹介します。 他のノートブックと同じようにJupyter Labでコードやマークダウンを編集し、レンダリングされたドキュメントをWebブラウザでプレビューしながら作業を行います。</p>
+<p>以下は、その概要です。</p>
+<p><img src="images/jupyter-quarto-preview.png" class="img-fluid" alt="左側のQuarto BasicsというタイトルのJupyterノートブックには、テキスト、コードセル、コードセルの結果（極軸上のラインプロット）が含まれています。右側は 同じノートブックをレンダリングしたものです。"></p>
+<p>左のノートブックは、右のHTMLバージョンに<em>レンダリング</em>されています。 これはQuarto出版の基本モデルです。ソースドキュメント（この場合はノートブック）を受け取り、HTML、PDF、MS Wordなどのさまざまな<a href="https://quarto.org/docs/output-formats/all-formats.html">出力フォーマット</a>にレンダリングします。</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>このチュートリアルではPythonを使用していますが、Juliaの使用（<a href="https://julialang.github.io/IJulia.jl/stable/">IJulia</a>カーネル経由）も十分にサポートされていることに注意してください。 詳細は、<a href="../../../docs/computations/julia.html">Using Julia</a> の記事を参照してください。</p>
+</div>
+</div>
+</section>
+<section id="レンダリング" class="level2">
+<h2 class="anchored" data-anchor-id="レンダリング">レンダリング</h2>
+<p>まず、Jupyter Lab でノートブック (<code>hello.ipynb</code>) を開き、いくつかのフォーマットにレンダリングするところから始めます。 自分の環境でステップバイステップで進めたい方は、以下からノートブックをダウンロードしてください。</p>
+<div class="callout-note callout callout-style-simple no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><i class="bi bi-journal-code"></i> <a href="_hello.ipynb" download="hello.ipynb">Download hello.ipynb</a></p>
+</div>
+</div>
+</div>
+<p>次に、作業用の新しいディレクトリを作成し、このディレクトリにノートブックをコピーします。</p>
+<p>この後、ターミナルでこのディレクトリに移動し、ノートブックの依存関係をインストールし、Jupyter Labを開いてノートブックでの作業を開始します。 インストールとJupyter Labの起動に使用できるコマンドは以下のとおりです。</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Platform</th>
+<th>Commands</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mac/Linux</td>
+<td><pre><code>python3 -m pip install jupyter matplotlib plotly
+python3 -m jupyter lab hello.ipynb</code></pre></td>
+</tr>
+<tr class="even">
+<td>Windows</td>
+<td><pre><code>py -m pip install jupyter matplotlib plotly
+py -m jupyter lab hello.ipynb</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>Jupyter Labで作成したノートブックがこちらです。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown visually-hidden code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Quarto Basics"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>For a demonstration of a line plot on a polar axis, see @fig-polar.</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-polar</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A line plot on a polar axis"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/jupyter-basics.png" class="border img-fluid" alt="A Jupyter notebook titled Quarto Basics containing some text, a code cell, and the result of the code cell, which is a line plot on a polar axis."></p>
+<p>次に、Jupyter Lab 内に Quarto コマンドに使用する Terminal を新規に作成します。</p>
+<p><img src="images/jupyter-terminal.png" class="border img-fluid" alt="Screenshot of menu items in Jupuyter Lab: File > New > Terminal."></p>
+<p>そして最後に、ノートブックをいくつかの形式にレンダリングします。</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render hello.ipynb <span class="at">--to</span> html</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render hello.ipynb <span class="at">--to</span> docx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>ターゲットファイル（この場合は <code>hello.ipynb</code> ）は常にコマンドラインの一番最初の引数でなければならないことに注意してください。</p>
+<p>QuartoでJupyterノートブックをレンダリングすると、ノートブックの内容（コード、マークダウン、出力）がプレーンなマークダウンに変換され、<a href="http://pandoc.org/">Pandoc</a>で処理されて、完成したフォーマットが作成されるのです。</p>
+<div class="quarto-figure quarto-figure-left" style="margin-left: 15px;">
+<figure class="figure">
+<p><img src="images/ipynb-how-it-works.png" class="img-fluid figure-img" alt="Workflow diagram starting with a Jupyter notebook, then md, then pandoc, then PDF, MS Word, or HTML." width="516"></p>
+</figure>
+</div>
+</section>
+<section id="オーサリング" class="level2">
+<h2 class="anchored" data-anchor-id="オーサリング">オーサリング</h2>
+<p><code>quarto render</code> コマンドは、配布用の最終版のドキュメントを作成するために使用されます。 しかし、オーサリング中は <code>quarto preview</code> コマンドを使用します。 今すぐターミナルから <code>hello.ipynb</code> を使って試してみてください。</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview hello.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これにより、文書がレンダリングされ、ウェブブラウザに表示されます。</p>
+<p><img src="images/quarto-preview.png" class="border img-fluid" alt="Rendered version of the earlier notebook in a web browser." width="500"></p>
+<p>Jupyter Labとブラウザのプレビューを並べて配置し、作業中の変化を確認するとよいでしょう。</p>
+<p><img src="images/jupyter-quarto-preview.png" class="img-fluid" alt="Side-by-side preview of notebook on the left and live preview in the browser on the right."></p>
+<p>ライブプレビューを実際に見るには:</p>
+<ol type="1">
+<li><p><code>theta</code> を定義しているコードの行を以下のように変更します。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>コードセルを再実行すると、新しいバージョンのプロットが生成されます。</p></li>
+<li><p>ノートブックを保存します（プレビューは自動的に更新されます）。</p></li>
+</ol>
+<p>これがQuartoでオーサリングする際の基本的なワークフローです。</p>
+<p>ノートにはいくつかの種類のセルがありますが、それぞれのセルについて少し考えてみましょう。</p>
+</section>
+<section id="yamlオプション" class="level2">
+<h2 class="anchored" data-anchor-id="yamlオプション">YAMLオプション</h2>
+<p>マークダウンとコードのセルはすでにおなじみでしょうが、ドキュメントレベルの YAML オプションに使われる新しいタイプのセル (“Raw”) があります。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml visually-hidden code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto Basics"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">jupyter</span><span class="kw">:</span><span class="at"> python3</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/jupyter-yaml.png" class="border img-fluid" alt="YAML of the notebook with the fields title, format, and jupyter. Title is set to Quarto Basics with title: &quot;Quarto Basics&quot;. Format is defined as html in the next line, and within the html format, code-fold is set to true. Jupyter is set to python3 with jupyter: python3."></p>
+<p><code>code-fold</code> オプションを <code>false</code> に変更してみてください。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>そして、ノートブックを保存してください。 以前はコードを表示するための <strong>Code</strong> ボタンで隠れていたのが、プロットの上に表示されるようになったことに気づくはずです。</p>
+</section>
+<section id="マークダウンセル" class="level2">
+<h2 class="anchored" data-anchor-id="マークダウンセル">マークダウンセル</h2>
+<p>マークダウンセルはレンダリング中にQuartoに渡される生のマークダウンを含みます。 これらのセルには有効なQuarto <a href="../../../docs/authoring/markdown-basics.html">マークダウン構文</a> を使用することができます。 ここではヘッダーと、下のコードセルで作成された図への相互参照を指定しています。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown visually-hidden code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Polar Axis</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>For a demonstration of a line plot on a polar axis, see @fig-polar.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/jupyter-markdown.png" class="border img-fluid" alt="A Markdown cell with the title Polar Axis as a second level header and text that reads 'For a demonstration of a line plot on a polar axis, see @fig-polar.'"></p>
+<p>ヘッダーを変更し、ノートブックを保存すると、プレビューに新しいヘッダーテキストが反映されます。</p>
+</section>
+<section id="コードセル" class="level2">
+<h2 class="anchored" data-anchor-id="コードセル">コードセル</h2>
+<p>下図のようなコードセルは、すでにご存知の方も多いと思います。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown visually-hidden code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-polar</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A line plot on a polar axis"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/jupyter-cell.png" class="border img-fluid" alt="A code cell with cell options for label and fig-cap and the code required to create the line plot on a polar axis."></p>
+<p>しかし、コードセルの上部には、 <code>label</code> と <code>fig-cap</code> オプションという、いくつかの新しいコンポーネントが存在します。 セルのオプションは、特別なプレフィックス付きのコメント (<code>#|</code>) を使用して YAML で記述されます。</p>
+<p>この例では、セルオプションは図を相互参照できるようにするために使用されています。 <code>fig-cap</code>やコードを変更し、セルを実行し、ノートブックを保存すると、更新されたプレビューを見ることができます。 出力を調整するために適用できる<a href="../../../docs/reference/cells/cells-jupyter.html">セルオプション</a>は多岐に渡ります。 これらのオプションについては、次のチュートリアルで掘り下げて説明します。</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>図形のための特に便利なセルオプションは <code>fig-alt</code> で、これは視覚障害のあるユーザーのために画像に代替テキストを追加することができるようにするものです。 詳しくは Amy Cesal の記事 <a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualization</a> を参照してください。</p>
+</div>
+</div>
+</section>
+<section id="次" class="level2">
+<h2 class="anchored" data-anchor-id="次">次</h2>
+<p>これで、Quarto ドキュメントの作成とオーサリングの基本がおわかりいただけたと思います。次のチュートリアルでは、Quartoをより深く掘り下げていきます。:</p>
+<ul>
+<li><p><a href="../computations/">チュートリアル：計算</a> — 実行可能なコードブロックの動作と出力を調整する方法について学びます。</p></li>
+<li><p><a href="../authoring/">Tutorial: Authoring</a> — 出力フォーマットや、引用、相互参照、高度なレイアウトなどのテクニカルライティング機能についての詳細です。</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="text/javascript">
+
+// replace cmd keyboard shortcut w/ control on non-Mac platforms
+const kPlatformMac = typeof navigator !== 'undefined' ? /Mac/.test(navigator.platform) : false;
+if (!kPlatformMac) {
+   var kbds = document.querySelectorAll("kbd")
+   kbds.forEach(function(kbd) {
+      kbd.innerHTML = kbd.innerHTML.replace(/⌘/g, '⌃');
+   });
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Proudly supported by <a href="https://www.rstudio.com"><img src="https://www.rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-flat.svg" class="img-fluid" alt="RStudio" width="65"></a></div>   
+      <div class="nav-footer-center">
+        <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">About</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../docs/faq/index.html">FAQ</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../license.html">License</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../../trademark.html">Trademark</a>
+  </li>  
+</ul>
+      </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/quarto_pub">
+      <i class="bi bi-twitter" role="img" aria-label="Quarto Twitter">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/quarto-dev/quarto-cli">
+      <i class="bi bi-github" role="img" aria-label="Quarto GitHub">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
