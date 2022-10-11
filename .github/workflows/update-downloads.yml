@@ -1,9 +1,9 @@
 # Regenerates the download json
 name: Update Downloads
-on:
-  workflow_dispatch:
-  schedule:
-    - cron:  "*/15 * * * *"
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron:  "*/15 * * * *"
 jobs:
   update-downloads:
     runs-on: ubuntu-latest

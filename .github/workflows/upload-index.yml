@@ -1,10 +1,10 @@
 # Uploads index to our Algolia Index
 name: Upload Index
-on:
-  workflow_dispatch:
-  repository_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
+# on:
+#   workflow_dispatch:
+#   repository_dispatch:
+#   schedule:
+#     - cron: "0 0 * * *"
 jobs:
   upload-index:
     runs-on: ubuntu-latest
