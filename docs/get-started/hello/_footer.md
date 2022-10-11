@@ -1,7 +1,7 @@
-## Next Up
+## 次
 
-You now know the basics of creating and authoring Quarto documents. The following tutorials explore Quarto in more depth:
+これで、Quarto ドキュメントの作成とオーサリングの基本がおわかりいただけたと思います。次のチュートリアルでは、Quartoをより深く掘り下げていきます。:
 
--   [Tutorial: Computations](../computations/) --- Learn how to tailor the behavior and output of executable code blocks.
+-   [チュートリアル：計算](../computations/) --- 実行可能なコードブロックの動作と出力を調整する方法について学びます。
 
--   [Tutorial: Authoring](../authoring/) --- Learn more about output formats and technical writing features like citations, crossrefs, and advanced layout.
+-   [Tutorial: Authoring](../authoring/) --- 出力フォーマットや、引用、相互参照、高度なレイアウトなどのテクニカルライティング機能についての詳細です。

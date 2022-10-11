@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Authoring"
+title: "チュートリアル: オーサリング"
 code-copy: hover
 editor_options:
   markdown:
@@ -11,25 +11,25 @@ editor_options:
 ../_tool-chooser.md
 ```
 
-## Overview
+## 概要
 
-In this tutorial we'll show you how to author Quarto documents in Jupyter Lab.
-In particular, we'll discuss the various document formats you can produce and show you how to add components like table of contents, equations, citations, cross-references, and more.
+このチュートリアルでは、Jupyter LabでQuartoドキュメントをオーサリングする方法を紹介します。
+特に、作成可能な様々なドキュメント形式について説明し、目次、数式、引用、相互参照などのコンポーネントを追加する方法を紹介します。
 
-## Output Formats
+## 出力フォーマット
 
-Quarto supports rendering notebooks to dozens of different [output formats](/docs/output-formats/all-formats.qmd).
-By default, the `html` format is used, but you can specify an alternate format (or formats) within document options.
+Quarto はノートブックを何十種類もの[出力フォーマット](/docs/output-formats/all-formats.qmd)にレンダリングすることをサポートしています。
+デフォルトでは `html` フォーマットが使用されますが、ドキュメントオプションで別のフォーマット(または複数のフォーマット)を指定することができます。
 
-### Format Options
+### フォーマットオプション
 
-Let's create a notebook and define various formats for it to be rendered to and add some options to each of the formats.
-As a reminder, document options are specified in YAML within a "Raw" cell at the beginning of the notebook.
-To create a Raw cell, add a cell at the top of the notebook and set its type to Raw using the notebook toolbar:
+ノートブックを作成し、それをレンダリングするためのさまざまなフォーマットを定義し、それぞれのフォーマットにいくつかのオプションを追加してみましょう。
+注意点として、ドキュメントのオプションはノートブックの最初にある「Raw」セル内でYAMLで指定します。
+Rawセルを作成するには、ノートブックの先頭にセルを追加し、ノートブックツールバーを使用してその種類をRawに設定します。
 
 ![](images/jupyter-raw-cell.png){.border fig-alt="Notebook formats.ipynb with a dropdown shown for a cell with three options: Code, Markdown, and Raw. Raw is highlighted."}
 
-Now, let's add some basic document metadata and a default output format.
+では、基本的なドキュメントのメタデータと、デフォルトの出力形式を追加してみましょう。
 
 ``` {.yaml .visually-hidden}
 ---
@@ -42,9 +42,9 @@ jupyter: python3
 
 ![](images/jupyter-format.png){.border fig-alt=""}
 
-We specified `pdf` as the default output format (if we exclude the `format` option then it will default to `html`).
+デフォルトの出力形式として `pdf` を指定しました（`format` オプションを除外すると、デフォルトは `html` になります）。
 
-Let's add some options to control our PDF output.
+PDF出力を制御するためのオプションを追加してみましょう。
 
 ``` {.yaml .visually-hidden}
 ---
@@ -60,10 +60,10 @@ jupyter: python3
 
 ![](images/jupyter-format-options.png){.boder fig-alt=""}
 
-### Multiple Formats
+### 複数のフォーマット
 
-Some documents you create will have only a single output format, however in many cases it will be desirable to support multiple formats.
-Let's add the `html` and `docx` formats to our document.
+作成するドキュメントの中には、単一の出力形式しか持たないものもありますが、多くの場合、複数の形式をサポートすることが望ましいと思われます。
+ここでは、 `html` と `docx` フォーマットをドキュメントに追加してみましょう。
 
 ``` {.yaml .visually-hidden}
 ---
@@ -87,17 +87,17 @@ jupyter: python3
 
 ![](images/jupyter-formats.png){.border fig-alt=""}
 
-There's a lot to take in here!
-Let's break it down a bit.
-The first two lines are generic document metadata that aren't related to output formats at all.
+盛りだくさんの内容ですね。
+少し分解してみましょう。
+最初の2行は、出力形式とは全く関係のない一般的なドキュメントのメタデータです。
 
 ``` yaml
 title: "Quarto Document"
 author: "Norah Jones"
 ```
 
-The next three lines are document format options that *apply to all formats*.
-which is why they are specified at the root level.
+次の3行は、*すべてのフォーマット*に適用される文書フォーマットオプションです。
+そのため、これらはルートレベルで指定されます。
 
 ``` yaml
 toc: true
@@ -105,7 +105,7 @@ number-sections: true
 highlight-style: pygments
 ```
 
-Next, we have the `format` option, where we provide format-specific options.
+次に、`format` オプションです。ここでは、フォーマット固有のオプションを指定します。
 
 ``` yaml
 format:
@@ -119,58 +119,58 @@ format:
   docx: default
 ```
 
-The `html` and `pdf` formats each provide an option or two.
-For example, for the HTML output we want the user to have control over whether to show or hide the code (`code-fold: true`) and use `katex` for math text.
-For PDF we define some margins.
-The `docx` format is a bit different---it specifies `docx: default`.
-This means just use all of the default options for the format.
+`html` と `pdf` のフォーマットには、それぞれ1つまたは2つのオプションがあります。
+例えば、HTMLの出力では、コードを表示するか隠すか (`code-fold: true`) をユーザーがコントロールできるようにし、数式テキストには `katex` を使用するようにします。
+PDFでは、いくつかの余白を定義します。
+`docx` フォーマットは少し変わっていて、 `docx: default` を指定しています。
+これは、そのフォーマットのデフォルトのオプションをすべて使用することを意味します。
 
-## Rendering
+## レンダリング
 
-The formats specified within document options define what is rendered by default.
-If we render the notebook with all the options given above using the following.
+ドキュメントオプションで指定されたフォーマットは、デフォルトでレンダリングされるものを定義します。
+もし、上であげたすべてのオプションを使って、以下のようにノートブックをレンダリングするとしたら。
 
 ``` {.bash filename="Terminal"}
 quarto render notebook.ipynb
 ```
 
-Then, the following files would be created.
+すると、以下のようなファイルが作成されます。
 
 -   `notebook.html`
 -   `notebook.pdf`
 -   `notebook.docx`
 
-We can select one or more formats using the `--to` option.
+また、`--to`オプションで1つ以上の形式を選択することができます。
 
 ``` {.bash filename="Terminal"}
 quarto render notebook.ipynb --to docx
 quarto render notebook.ipynb --to docx,pdf
 ```
 
-Note that the target file (in this case `notebook.ipynb`) should always be the very first command line argument.
+ターゲットファイル（この場合は `notebook.ipynb` ）は常にコマンドラインの一番最初の引数でなければならないことに注意してください。
 
-If needed we can also render formats that aren't specified within document options.
+必要であれば、ドキュメントオプションで指定されていないフォーマットもレンダリングすることができます。
 
 ``` {.bash filename="Terminal"}
 quarto render notebook.ipynb --to odt
 ```
 
-Since the `odt` format isn't included within document options, the default options for the format will be used.
+ドキュメントオプションに `odt` フォーマットが含まれていないため、このフォーマットに対するデフォルトのオプションが使用されます。
 
 ::: {.callout-note appearance="simple"}
-Note that when rendering an `.ipynb` Quarto **will not** execute the cells within the notebook by default (the presumption being that you already executed them while editing the notebook).
-If you want to execute the cells you can pass the `--execute` flag to render.
+Quartoは`.ipynb`をレンダリングするとき、デフォルトではノートブック内のセルを実行しないことに注意してください（ノートブックの編集中にすでに実行したと仮定されます）。
+もし、セルを実行したい場合は、`--execute`フラグをレンダリングに渡すことができます。
 
 ``` {.bash filename="Terminal"}
 quarto render notebook.ipynb --execute
 ```
 :::
 
-## Sections
+##  セクション
 
-You can use a table of contents and/or section numbering to make it easier for readers to navigate your document.
-Do this by adding the `toc` and/or `number-sections` options to document options.
-Note that these options are typically specified at the root level because they are shared across all formats.
+目次やセクション番号をつけることで、読者がドキュメントを読み進めやすくすることができます。
+これを行うには、 `toc` や `number-sections` オプションをドキュメントオプションに追加します。
+これらのオプションはすべてのフォーマットで共有されているため、通常はルートレベルで指定されることに注意してください。
 
 ``` {.yaml .visually-hidden}
 ---

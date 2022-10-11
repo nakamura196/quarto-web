@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Hello, Quarto"
+title: "チュートリアル: Hello, Quarto"
 editor_options:
   markdown:
     wrap: sentence
@@ -10,36 +10,36 @@ editor_options:
 ../_tool-chooser.md
 ```
 
-## Overview
+## 概要
 
-In this tutorial we'll show you how to use Jupyter Lab with Quarto.
-You'll edit code and markdown in Jupyter Lab, just as you would with any notebook, and preview the rendered document in a web browser as you work.
+このチュートリアルでは、QuartoでJupyter Labを使用する方法を紹介します。
+他のノートブックと同じようにJupyter Labでコードやマークダウンを編集し、レンダリングされたドキュメントをWebブラウザでプレビューしながら作業を行います。
 
-Below is an overview of how this will look.
+以下は、その概要です。
 
-![](images/jupyter-quarto-preview.png){fig-alt="On the left: A Jupyter notebook titled Quarto Basics containing some text, a code cell, and the result of the code cell, which is a line plot on a polar axis. On the right: Rendered version of the same notebook."}
+![](images/jupyter-quarto-preview.png){fig-alt="左側のQuarto BasicsというタイトルのJupyterノートブックには、テキスト、コードセル、コードセルの結果（極軸上のラインプロット）が含まれています。右側は 同じノートブックをレンダリングしたものです。"}
 
-The notebook on the left is *rendered* into the HTML version you see on the right.
-This is the basic model for Quarto publishing---take a source document (in this case a notebook) and render it to a variety of [output formats](https://quarto.org/docs/output-formats/all-formats.html), including HTML, PDF, MS Word, etc.
+左のノートブックは、右のHTMLバージョンに*レンダリング*されています。
+これはQuarto出版の基本モデルです。ソースドキュメント（この場合はノートブック）を受け取り、HTML、PDF、MS Wordなどのさまざまな[出力フォーマット](https://quarto.org/docs/output-formats/all-formats.html)にレンダリングします。
 
 ::: callout-note
-Note that while this tutorial uses Python, using Julia (via the [IJulia](https://julialang.github.io/IJulia.jl/stable/) kernel) is also well supported.
-See the article on [Using Julia](/docs/computations/julia.qmd) for additional details.
+このチュートリアルではPythonを使用していますが、Juliaの使用（[IJulia](https://julialang.github.io/IJulia.jl/stable/)カーネル経由）も十分にサポートされていることに注意してください。
+詳細は、[Using Julia](/docs/computations/julia.qmd) の記事を参照してください。
 :::
 
-## Rendering
+## レンダリング
 
-We'll start out by opening a notebook (`hello.ipynb`) in Jupyter Lab and rendering it to a couple of formats.
-If you want to follow along step-by-step in your own environment, download the notebook below.
+まず、Jupyter Lab でノートブック (`hello.ipynb`) を開き、いくつかのフォーマットにレンダリングするところから始めます。
+自分の環境でステップバイステップで進めたい方は、以下からノートブックをダウンロードしてください。
 
 ::: {.callout-note appearance="minimal"}
 <i class="bi bi-journal-code"></i> [Download hello.ipynb](_hello.ipynb){download="hello.ipynb"}
 :::
 
-Then, create a new directory to work within and copy the notebook into this directory.
+次に、作業用の新しいディレクトリを作成し、このディレクトリにノートブックをコピーします。
 
-Once you've done that, switch to this directory in a Terminal, install notebook dependencies (if necessary), and open Jupyter Lab to get started working with the notebook.
-The commands you can use for installation and opening Jupyter Lab are given in the table below.
+この後、ターミナルでこのディレクトリに移動し、ノートブックの依存関係をインストールし、Jupyter Labを開いてノートブックでの作業を開始します。
+インストールとJupyter Labの起動に使用できるコマンドは以下のとおりです。
 
 +-----------+--------------------------------------------------------------+
 | Platform  | Commands                                                     |
@@ -51,7 +51,7 @@ The commands you can use for installation and opening Jupyter Lab are given in t
 |           |     py -m jupyter lab hello.ipynb                            |
 +-----------+--------------------------------------------------------------+
 
-Here is our notebook in Jupyter Lab.
+Jupyter Labで作成したノートブックがこちらです。
 
 ```` {.markdown .visually-hidden}
 ---
@@ -85,60 +85,60 @@ plt.show()
 
 ![](images/jupyter-basics.png){.border fig-alt="A Jupyter notebook titled Quarto Basics containing some text, a code cell, and the result of the code cell, which is a line plot on a polar axis."}
 
-Next, create a new Terminal within Jupyter Lab to use for Quarto commands.
+次に、Jupyter Lab 内に Quarto コマンドに使用する Terminal を新規に作成します。
 
 ![](images/jupyter-terminal.png){.border fig-alt="Screenshot of menu items in Jupuyter Lab: File > New > Terminal."}
 
-And finally, render the notebook to a couple of formats.
+そして最後に、ノートブックをいくつかの形式にレンダリングします。
 
 ``` {.bash filename="Terminal"}
 quarto render hello.ipynb --to html
 quarto render hello.ipynb --to docx
 ```
 
-Note that the target file (in this case `hello.ipynb`) should always be the very first command line argument.
+ターゲットファイル（この場合は `hello.ipynb` ）は常にコマンドラインの一番最初の引数でなければならないことに注意してください。
 
-When you render a Jupyter notebook with Quarto, the contents of the notebook (code, markdown, and outputs) are converted to plain markdown and then processed by [Pandoc](http://pandoc.org/), which creates the finished format.
+QuartoでJupyterノートブックをレンダリングすると、ノートブックの内容（コード、マークダウン、出力）がプレーンなマークダウンに変換され、[Pandoc](http://pandoc.org/)で処理されて、完成したフォーマットが作成されるのです。
 
 ![](images/ipynb-how-it-works.png){style="margin-left: 15px;" fig-align="left" width="516" fig-alt="Workflow diagram starting with a Jupyter notebook, then md, then pandoc, then PDF, MS Word, or HTML."}
 
-## Authoring
+## オーサリング
 
-The `quarto render` command is used to create the final version of your document for distribution.
-However, during authoring you'll use the `quarto preview` command.
-Try it now from the Terminal with `hello.ipynb`.
+`quarto render` コマンドは、配布用の最終版のドキュメントを作成するために使用されます。
+しかし、オーサリング中は `quarto preview` コマンドを使用します。
+今すぐターミナルから `hello.ipynb` を使って試してみてください。
 
 ``` {.bash filename="Terminal"}
 quarto preview hello.ipynb
 ```
 
-This will render your document and then display it in a web browser.
+これにより、文書がレンダリングされ、ウェブブラウザに表示されます。
 
 ![](images/quarto-preview.png){.border fig-alt="Rendered version of the earlier notebook in a web browser." width="500"}
 
-You might want to position Jupyter Lab and the browser preview side-by-side so you can see changes as you work.
+Jupyter Labとブラウザのプレビューを並べて配置し、作業中の変化を確認するとよいでしょう。
 
 ![](images/jupyter-quarto-preview.png){fig-alt="Side-by-side preview of notebook on the left and live preview in the browser on the right."}
 
-To see live preview in action:
+ライブプレビューを実際に見るには:
 
-1.  Change the the line of code that defines `theta` as follows:
+1.  `theta` を定義しているコードの行を以下のように変更します。
 
     ``` python
     theta = 4 * np.pi * r
     ```
 
-2.  Re-run the code cell to generate a new version of the plot.
+2.  コードセルを再実行すると、新しいバージョンのプロットが生成されます。
 
-3.  Save the notebook (the preview will update automatically).
+3.  ノートブックを保存します（プレビューは自動的に更新されます）。
 
-This is the basic workflow for authoring with Quarto.
+これがQuartoでオーサリングする際の基本的なワークフローです。
 
-There are few different types of cells in our notebook, let's work a bit with each type.
+ノートにはいくつかの種類のセルがありますが、それぞれのセルについて少し考えてみましょう。
 
-## YAML Options
+## YAMLオプション
 
-You are likely already familiar with markdown and code cells, but there is a new type of cell ("Raw") that is used for document-level YAML options.
+マークダウンとコードのセルはすでにおなじみでしょうが、ドキュメントレベルの YAML オプションに使われる新しいタイプのセル ("Raw") があります。
 
 ``` {.yaml .visually-hidden}
 ---
@@ -152,7 +152,7 @@ jupyter: python3
 
 ![](images/jupyter-yaml.png){.border fig-alt="YAML of the notebook with the fields title, format, and jupyter. Title is set to Quarto Basics with title: \"Quarto Basics\". Format is defined as html in the next line, and within the html format, code-fold is set to true. Jupyter is set to python3 with jupyter: python3."}
 
-Try changing the `code-fold` option to `false`.
+`code-fold` オプションを `false` に変更してみてください。
 
 ``` yaml
 format: 
@@ -160,14 +160,14 @@ format:
     code-fold: false
 ```
 
-Then save the notebook.
-You'll notice that the code is now shown above the plot, where previously it was hidden with a **Code** button that could be used to show it.
+そして、ノートブックを保存してください。
+以前はコードを表示するための **Code** ボタンで隠れていたのが、プロットの上に表示されるようになったことに気づくはずです。
 
-## Markdown Cells
+## マークダウンセル
 
-Markdown cells contain raw markdown that will be passed through to Quarto during rendering.
-You can use any valid Quarto [markdown syntax](/docs/authoring/markdown-basics.qmd) in these cells.
-Here we specify a header and a cross-reference to the figure created in the code cell below.
+マークダウンセルはレンダリング中にQuartoに渡される生のマークダウンを含みます。
+これらのセルには有効なQuarto [マークダウン構文](/docs/authoring/markdown-basics.qmd) を使用することができます。
+ここではヘッダーと、下のコードセルで作成された図への相互参照を指定しています。
 
 ``` {.markdown .visually-hidden}
 ## Polar Axis
@@ -177,11 +177,11 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 
 ![](images/jupyter-markdown.png){.border fig-alt="A Markdown cell with the title Polar Axis as a second level header and text that reads 'For a demonstration of a line plot on a polar axis, see @fig-polar.'"}
 
-Try changing the header and saving the notebook---the preview will update with the new header text.
+ヘッダーを変更し、ノートブックを保存すると、プレビューに新しいヘッダーテキストが反映されます。
 
-## Code Cells
+## コードセル
 
-You are likely already familiar with code cells, like the one shown below.
+下図のようなコードセルは、すでにご存知の方も多いと思います。
 
 ```` {.markdown .visually-hidden}
 ```{{python}}
@@ -205,18 +205,17 @@ plt.show()
 
 ![](images/jupyter-cell.png){.border fig-alt="A code cell with cell options for label and fig-cap and the code required to create the line plot on a polar axis."}
 
-But there are some new components at the top of the code cell: `label` and `fig-cap`options.
-Cell options are written in YAML using a specially prefixed comment (`#|`).
+しかし、コードセルの上部には、 `label` と `fig-cap` オプションという、いくつかの新しいコンポーネントが存在します。
+セルのオプションは、特別なプレフィックス付きのコメント (`#|`) を使用して YAML で記述されます。
 
-In this example, the cell options are used to make the figure cross-reference-able.
-Try changing the `fig-cap` and/or the code, running the cell, and then saving the notebook to see the updated preview.
-
-There are a wide variety of [cell options](/docs/reference/cells/cells-jupyter.qmd) that you can apply to tailor your output.
-We'll delve into these options in the next tutorial.
+この例では、セルオプションは図を相互参照できるようにするために使用されています。
+`fig-cap`やコードを変更し、セルを実行し、ノートブックを保存すると、更新されたプレビューを見ることができます。
+出力を調整するために適用できる[セルオプション](/docs/reference/cells/cells-jupyter.qmd)は多岐に渡ります。
+これらのオプションについては、次のチュートリアルで掘り下げて説明します。
 
 ::: callout-note
-One particularly useful cell option for figures is `fig-alt`, which enables you to add alternative text to images for users with visual impairments.
-See Amy Cesal's article on [Writing Alt Text for Data Visualization](https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81) to learn more.
+図形のための特に便利なセルオプションは `fig-alt` で、これは視覚障害のあるユーザーのために画像に代替テキストを追加することができるようにするものです。
+詳しくは Amy Cesal の記事 [Writing Alt Text for Data Visualization](https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81) を参照してください。
 :::
 
 ``` include

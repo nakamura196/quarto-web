@@ -38,7 +38,7 @@ image: /images/hero_right.png
 ::: {.g-col-lg-3 .g-col-12}
 ## Step 2 
 
-#### Choose your tool<br/>and get started{.fw-light}
+#### ツールを選んで<br/>はじめよう。{.fw-light}
 :::
 
 ::: {.tool .g-col-lg-9 .g-col-12}

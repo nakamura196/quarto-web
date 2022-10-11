@@ -51,21 +51,21 @@ website:
     title: false
     collapse-below: lg
     left:
-      - text: "Overview"
+      - text: "概要"
         href: index.qmd
-      - text: "Get Started"
+      - text: "はじめに"
         href: docs/get-started/index.qmd
-      - text: "Guide"
+      - text: "ガイド"
         href: docs/guide/index.qmd
       - text: Extensions
         href: docs/extensions/index.qmd
       - text: "Reference"
         href: docs/reference/index.qmd
-      - text: "Gallery"
+      - text: "ギャラリー"
         href: docs/gallery/index.qmd
-      - text: "Blog"
+      - text: "ブログ"
         href: docs/blog/index.qmd
-      - text: "Help"
+      - text: "ヘルプ"
         menu:
           - text: "Report a Bug"
             icon: "bug"
@@ -92,7 +92,7 @@ website:
       align: left
       contents:
         - docs/get-started/index.qmd
-        - text: "Tutorial: Hello, Quarto"
+        - text: "チュートリアル: Hello, Quarto"
           href: docs/get-started/hello/
         - text: "Tutorial: Computations"
           href: docs/get-started/computations/
